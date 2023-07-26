@@ -16,4 +16,9 @@ In this project, I employed my SQL expertise to delve into and resolve a challen
 
 -Critical Thinking
 
+## Findings & Recommendation
+From the analysis,It is clear that Jeremy Bower committed the murder hence should be apprehended by the Police.
+
+
+
   
