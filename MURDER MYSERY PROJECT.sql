@@ -17,20 +17,20 @@ WHERE type ="murder" AND date=20180115 AND city="SQL City";
             will be done by querrying the Person's table and filtering it with the address "Nortwestern Dr".The first witness
             lives at the last house, so I will order the witness's address number  in descending order and Limit it by 1 so that I
             can see the last person living in the last house of Northwestern Dr Street.*/
-            select Id,name,address_street_name
- from person 
- where address_street_name="Northwestern Dr"
- order by address_number DESC
- limit 1;
+ SELECT Id,name,address_street_name
+ FROM person 
+ WHERE address_street_name="Northwestern Dr"
+ ORDER BY address_number DESC
+ LIMIT 1;
  /*Upon the above querry from the result set obtained,the Name of the person living in the last house
                          is Morty Schapiro with id 14887.*/    
  
  
  /* STEP 4; The Second witness ID number will be retrieved using their name and address. This will be done by querrying
             Person Table and filtering it with the witness's name and address;"Annabel and Franklin Ave".*/
-select name,id,address_street_name
-from person
-where name like "%Annabel%" and address_street_name="Franklin Ave";
+SELECT name,id,address_street_name
+FROM person
+WHERE name LIKE "%Annabel%" AND address_street_name="Franklin Ave";
 /* Upon the above querry, from the the result set obtained , the name of the second witness is 
    Annabel Miller with an ID of 16371.*/
    
@@ -38,12 +38,12 @@ where name like "%Annabel%" and address_street_name="Franklin Ave";
    that the Person and interview table has foreign and primary key. The person table has the primary key(Id) while the
    Interview table had the foreign key(Person Id).These keys will be utilized to join both tables together from which relevant 
    information will be obtained.*/
-   select person.name,person.id,interview.transcript
-   from person
-   join interview
-   on person.id=interview.person_id
-   where person.id=14887
-   or person.id=16371;
+   SELECT person.name,person.id,interview.transcript
+   FROM person
+   JOIN interview
+   ON person.id=interview.person_id
+   WHERE person.id=14887
+   OR person.id=16371;
 /* The FIRST WITNESS( id=14887) transcript reads that "I heard a gunshot and then saw a man run out.He had a "Get Fit Now"bag.
    The membership number on the bag started with "48Z".only gold members have those bags.The man got into the car with a plate that 
    included "H42W".*/
@@ -76,11 +76,11 @@ where name like "%Annabel%" and address_street_name="Franklin Ave";
           "H42W".Hence, to identify the main suspect between the two men who committed the crime,i used the schema diagram to join 
           the person table and driver license table as they both have primary and foreign key id and I filtered it with their person id
           to find out whose car was registered with "H42W".*/
-          SELECT person.name,drivers_license.plate_number,drivers_license.gender,person.address_number,person.address_street_name,person.ssn
-from person
-join drivers_license
-on drivers_license.id=person.license_id
-where person.id in (67318,28819);
+SELECT person.name,drivers_license.plate_number,drivers_license.gender,person.address_number,person.address_street_name,person.ssn
+FROM person
+JOIN drivers_license
+ON drivers_license.id=person.license_id
+WHERE person.id IN (67318,28819);
 /* Upon the above querry,it was discovered that Jeremy Bowers has a car with license number H42W as mentioned
    by his first witness and his gender reveal that he is male and reside at 530,Washington PI,Apt 3A.*/
    
